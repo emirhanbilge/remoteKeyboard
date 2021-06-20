@@ -1,0 +1,106 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>EBB Pico and ESP 8266 Keyboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="data:,">
+
+    <title>ESP Web Server</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="data:,">
+</head>
+
+<body>
+    <style>
+        .button {
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            background: black;
+        }
+    </style>
+    </style>
+    <div class="topnav">
+        <h1>Keyboard</h1>
+    </div>
+    <div class="content">
+        <div class="card">
+            <div class="row">
+                <p><button id="button" onclick=sendDate( "q") class="button">Q</button>
+                    <button id="button" onclick=sendDate( 'w') class="button">W</button>
+                    <button id="button" onclick=sendDate( 'e') class="button">E</button>
+                    <button id="button" onclick=sendDate( 'r') class="button">R</button>
+                    <button id="button" onclick=sendDate( 't') class="button">T</button>
+                    <button id="button" onclick=sendDate( 'y') class="button">Y</button>
+                    <button id="button" onclick=sendDate( 'u') class="button">U</button>
+                    <button id="button" onclick=sendDate( 'i') class="button">I</button>
+                    <button id="button" onclick=sendDate( 'o') class="button">O</button>
+                    <button id="button" onclick=sendDate( 'p') class="button">P</button>
+                </p>
+            </div>
+            <div class="row">
+                <p>
+                    <button id="button" onclick=sendDate( 'a') class="button">A</button>
+                    <button id="button" onclick=sendDate( 's') class="button">S</button>
+                    <button id="button" onclick=sendDate( 'd') class="button">D</button>
+                    <button id="button" onclick=sendDate( 'f') class="button">F</button>
+                    <button id="button" onclick=sendDate( 'g') class="button">G</button>
+                    <button id="button" onclick=sendDate( 'h') class="button">H</button>
+                    <button id="button" onclick=sendDate( 'j') class="button">J</button>
+                    <button id="button" onclick=sendDate( 'k') class="button">K</button>
+                    <button id="button" onclick=sendDate( 'l') class="button">L</button>
+                </p>
+            </div>
+            <div class="row">
+                <p>
+                    <button id="button" onclick=sendDate( 'z') class="button">Z</button>
+                    <button id="button" onclick=sendDate( 'x') class="button">X</button>
+                    <button id="button" onclick=sendDate( 'c') class="button">C</button>
+                    <button id="button" onclick=sendDate( 'v') class="button">V</button>
+                    <button id="button" onclick=sendDate( 'b') class="button">B</button>
+                    <button id="button" onclick=sendDate( 'n') class="button">N</button>
+                    <button id="button" onclick=sendDate( 'm') class="button">M</button>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var gateway = `ws://${window.location.hostname}/ws`;
+        var websocket;
+        window.addEventListener('load', onLoad);
+
+        function initWebSocket() {
+            console.log('Trying to open a WebSocket connection...');
+            websocket = new WebSocket(gateway);
+            websocket.onopen = onOpen;
+            websocket.onclose = onClose;
+        }
+
+        function onOpen(event) {
+            console.log('Connection opened');
+        }
+
+        function onClose(event) {
+            console.log('Connection closed');
+            setTimeout(initWebSocket, 2000);
+        }
+
+        function sendDate(str) {
+            websocket.send(str);
+        }
+
+        function onLoad(event) {
+            initWebSocket();
+        }
+    </script>
+</body>
+
+</html>

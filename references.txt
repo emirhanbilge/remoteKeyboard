@@ -1,0 +1,12 @@
+https://RandomNerdTutorials.com/esp8266-nodemcu-websocket-server-arduino/
+https://www.youtube.com/watch?v=aEWptdD32iA
+https://learn.adafruit.com/category/micropython
+https://learn.adafruit.com/circuitpython-libraries-on-micropython-using-the-raspberry-pi-pico/micropython-installation
+https://randomnerdtutorials.com/
+
+
+Usefull Videos :
+https://www.youtube.com/c/NovaspiritTech/featured
+https://learn.adafruit.com/category/micropython
+
+
