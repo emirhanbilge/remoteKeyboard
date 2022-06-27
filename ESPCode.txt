@@ -4,7 +4,7 @@
 
 
 const char *ssid = "EBB-Home";
-const char *password = "EEAI-Mazda-Drsnby-10@43";
+const char *password = "";
 
 
 
